@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Apple's Psychic Game</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<div id="container">
+		<h1>Apple's Psychic Game</h1>
+		<h2>guess what letter im thinking of</h2>
+		</div>
+	</div>
+
+	<div id="game">
+		<p id="wins">You got lucky X times:</p>
+		<br>
+		<p id="losses">You're a Loser X times:</p>
+		<br>
+		<p id="trysLeft">You have X guesses Left:</p>
+	</div>
+	<div id="guessedletters">
+		<p id="guesses">You've guessed X so far:</p>
+	</div>
+<script>
+	//Variables
+		var letters = ["a" ,"b" ,"c" ,"d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+		var wins = 0;
+		var losses = 0;
+		var trysLeft = 8;
+		//var guesses = ;
+		//console.log(wins)
+	    //console.log(losses)
+	    //console.log(trysLeft)
+
+    //CPU Guess and UserGuesses
+		var cpuGuess = letters[Math.floor(Math.random() * letters.length)];
+
+			console.log(cpuGuess);
+
+		var userGuess = document.addEventListener("keyup", function(event) {
+	    	console.log(event.key);
+		});
+		
+	//WIN/LOSS Conditions
+		if(userGuess == cpuGuess){
+	        wins++;
+	   		alert("Well done, you've guessed the letter!");
+	    } else{
+	    	trysLeft--;
+	    }
+	    if(userGuess == 0){
+	    	losses++;
+	    }
+
+
+	//Updated game stats
+		    document.getElementById("wins").innerHTML = "You got lucky " + wins + " times";
+		    document.getElementById("losses").innerHTML = "You're a Loser " + losses + " times";
+		    document.getElementById("trysLeft").innerHTML = "You have " + trysLeft + " guesses left";
+		    document.getElementById("guesses").innerHTML = "You've guessed " + guesses + " so far";
+
+
+    //ONCE GAME IS OVER, HOW DO I GET THE GAME TO RESTART?
+
+</script>
+</body>
+</html>

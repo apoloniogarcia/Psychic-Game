@@ -1,0 +1,30 @@
+#container{
+	background-color: black;
+	width: 700px;
+	margin: 0 auto;
+
+}
+body{
+	background-color: #9B59B6;
+	text-align: center;
+}
+h1{
+	color: red;
+}
+h2{
+	color: white;
+}
+#game{
+	background-color: #D5DBDB;
+	width: 600px;
+	margin: 10px auto;
+	font-weight: bold;
+	font-size: 150%;
+}
+#guessedletters{
+	background-color: black;
+	width: 100%;
+	margin: 10px auto;
+	color: white;
+	font-size: 200%;
+}
