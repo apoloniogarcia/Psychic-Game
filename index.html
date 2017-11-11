@@ -6,62 +6,77 @@
 </head>
 <body>
 	<div id="container">
-		<h1>Apple's Psychic Game</h1>
-		<h2>guess what letter im thinking of</h2>
+		<h1 id="header">Apple's Psychic Game</h1>
+		<h2>~Guess what letter im thinking of~</h2>
+		<br>
+		<h3>Guess a letter to begin!!</h3>
 		</div>
 	</div>
 
 	<div id="game">
-		<p id="wins">You got lucky X times:</p>
+		<p id="wins">You WON ___ times:</p>
 		<br>
-		<p id="losses">You're a Loser X times:</p>
+		<p id="losses">You LOST ___ times:</p>
 		<br>
-		<p id="trysLeft">You have X guesses Left:</p>
+		<p id="trysLeft">You have ___ guesses Left:</p>
 	</div>
 	<div id="guessedletters">
-		<p id="guesses">You've guessed X so far:</p>
+		<p id="guesses">Letters You've used:</p>
 	</div>
+
 <script>
-	//Variables
-		var letters = ["a" ,"b" ,"c" ,"d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+		//Variables
+		var letters = ["a", "A" ,"b", "B", "c", "C", "d", "D", "e", "E", "f", "F", "g", "G", "h", "H", "i", "I", "j", "J", "k", "K", "l", "L", "m", "M", "n", "N", "o", "O", "p", "P", "q", "Q", "r", "R", "s", "S", "t", "T", "u", "U", "v", "V", "w", "W", "x", "X", "y", "Y", "z", "Z"];
+
 
 		var wins = 0;
 		var losses = 0;
-		var trysLeft = 8;
-		//var guesses = ;
-		//console.log(wins)
-	    //console.log(losses)
-	    //console.log(trysLeft)
+		var cpuGuess;
+		var trysLeft;
+		var guesses;
+	startGame()
 
     //CPU Guess and UserGuesses
-		var cpuGuess = letters[Math.floor(Math.random() * letters.length)];
+		console.log(cpuGuess);
 
-			console.log(cpuGuess);
+		document.onkeyup = function(event){
 
-		var userGuess = document.addEventListener("keyup", function(event) {
+		var userGuess = event.key;
+			var index = letters.indexOf(userGuess);
 	    	console.log(event.key);
-		});
-		
+
 	//WIN/LOSS Conditions
-		if(userGuess == cpuGuess){
-	        wins++;
-	   		alert("Well done, you've guessed the letter!");
-	    } else{
-	    	trysLeft--;
-	    }
-	    if(userGuess == 0){
-	    	losses++;
-	    }
-
-
+		if(index !== -1){
+			if(userGuess == cpuGuess){
+		        wins++;
+		   		alert("Well done, you won!");
+		   		startGame()
+		    } else{
+		    	guesses.push(userGuess)
+		    	trysLeft--; 
+		    }
+		    if(trysLeft == 0){
+		    	losses++;
+		    	alert("lol, LOSER!");
+		    	startGame ()
+		    }
+	    
 	//Updated game stats
-		    document.getElementById("wins").innerHTML = "You got lucky " + wins + " times";
-		    document.getElementById("losses").innerHTML = "You're a Loser " + losses + " times";
-		    document.getElementById("trysLeft").innerHTML = "You have " + trysLeft + " guesses left";
-		    document.getElementById("guesses").innerHTML = "You've guessed " + guesses + " so far";
+			    document.getElementById("wins").innerHTML = "You WON " + wins + " times";
+			    document.getElementById("losses").innerHTML = "You LOST " + losses + " times";
+			    document.getElementById("trysLeft").innerHTML = "You have " + trysLeft + " guesses left";
+			    document.getElementById("guesses").innerHTML = "Letters youve used: " + guesses;
+		}
 
+		};
 
-    //ONCE GAME IS OVER, HOW DO I GET THE GAME TO RESTART?
+    //RESTART FUNCTION:
+
+    function startGame (){
+    	trysLeft = 8;
+    	guesses = [];
+    	cpuGuess = letters[Math.floor(Math.random() * letters.length)];
+    }
 
 </script>
 </body>
